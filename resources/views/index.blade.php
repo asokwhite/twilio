@@ -79,16 +79,20 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
+                   Video Chat Rooms
+               </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+               {!! Form::open(['url' => 'room/create']) !!}
+                   {!! Form::label('roomName', 'Create or Join a Video Chat Room') !!}
+                   {!! Form::text('roomName') !!}
+                   {!! Form::submit('Go') !!}
+               {!! Form::close() !!}
+
+               @if($rooms)
+               @foreach ($rooms as $room)
+                   <a href="{{ url('/room/join/'.$room) }}">{{ $room }}</a>
+               @endforeach
+               @endif
             </div>
         </div>
     </body>
